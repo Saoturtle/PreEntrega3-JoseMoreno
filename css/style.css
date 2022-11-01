@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin:wght@500&family=Rajdhani:wght@500&display=swap');
+
+body{
+    font-family: 'M PLUS Code Latin';
+    word-spacing: 0.20em;
+    letter-spacing:0.1em;
+}
+button, label, option{
+    font-family: 'M PLUS Code Latin';
+    word-spacing: 0.20em;
+    letter-spacing:0.1em;
+}
+

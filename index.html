@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="has-background-black-ter has-text-white is-family-code" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/010813761b.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/ico" href="./img/2.png">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Mis Gastos App</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar is-black is-spaced mb-5" role="navigation" aria-label="barra">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="index.html">
+                    <span class="icon is-large mr-2">
+                        <i class="fas fa-wallet is-size-2 pr-3" aria-hidden="true"></i>
+                    </span>
+                    <h1 class="title is-2 has-text-white ">Mis Gastos</h1>
+                </a>
+
+                <a role="button" class="navbar-burger mt-2 is-black" aria-label="menu" aria-expanded="false"
+                    id="boton-menu-hamburguesa" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="navbar-menu" id="abrir-menu-hamburguesa" >
+                <div class="navbar-end has-text-white">
+                    <a class="navbar-item" id="item-nav-seccion-balance">
+                        <i class="fas fa-chart-line mr-2"></i>Balance
+                    </a>
+                    <a class="navbar-item" id="item-nav-seccion-categorias">
+                        <i class="fas fa-tag mr-1"></i>Categorías
+                    </a>
+                    <a class="navbar-item" id="item-nav-seccion-reportes">
+                        <i class="fas fa-chart-pie mr-1"></i>Reportes
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <!--SECCION PRINCIPAL BALANCE-->
+
+    <main class="section balance seccion-visible " id="seccion-balance">
+        <div class="container">
+            <div class="columns is-centered is-multiline ">
+
+                <div class=" column is-3-widescreen is-4-desktop is-12-tablet ">
+                    <article class="box has-background-grey-darker has-text-white ">
+                        <h3 class="title is-3 has-text-white">Balance</h3>
+                        <div class="columns is-mobile">
+                            <p class="column is-size-5">Ganancias</p>
+                            <div class="column has-text-success has-text-right" id="total-ganancias-box-balance">+$0
+                            </div>
+                        </div>
+                        <div class="columns is-mobile">
+                            <p class="column is-size-5">Gastos</p>
+                            <div class="column has-text-danger has-text-right" id="total-gastos-box-balance">
+                                -$0</div>
+                        </div>
+                        <div class="columns is-mobile">
+                            <p class="column is-size-4">Total</p>
+                            <div class="column has-text-weight-semibold has-text-right" id="total-gastos-ganancias">
+                                $0</div>
+                        </div>
+                    </article>
+
+
+                    <article class="box my-5 has-background-grey-darker ">
+                        <div class="columns is-mobile is-vcentered">
+                            <div class="column is-5">
+                                <h4 class="title is-4 has-text-white">Filtros</h4>
+                            </div>
+                            <div class="column is-flex is-justify-content-flex-end">
+                                <button class="button is-ghost has-text-white" id="ocultar-filtros">
+                                    Ocultar filtros</button>
+                            </div>
+                        </div>
+
+                        <form class="has-background-grey-darker" id="formulario-seccion-balance">
+                            <div class="field">
+                                <label class="label has-text-white " for="filtro-tipo">Todos</label>
+                                <div class="control">
+                                    <div class="select is-fullwidth ">
+                                        <select id="filtro-tipo">
+                                            <option value="todos">Todos</option>
+                                            <option value="gasto">Gasto</option>
+                                            <option value="ganancia">Ganancia</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label has-text-white" for="filtro-categoria">Categoría</label>
+                                <div class="control">
+                                    <div class="select is-fullwidth">
+                                        <select id="filtro-categoria">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label has-text-white" for="filtro-fecha">Desde</label>
+                                <div class="control">
+                                    <input class="input" id="filtro-fecha" type="date">
+                                    </input>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label has-text-white" for="filtro-ordenar">Ordenar por</label>
+                                <div class="control">
+                                    <div class="select is-fullwidth">
+                                        <select id="filtro-ordenar">
+                                            <option value="recientes">Más reciente</option>
+                                            <option value="menos-recientes">Menos reciente</option>
+                                            <option value="mayor-monto">Mayor monto</option>
+                                            <option value="menor-monto">Menor monto</option>
+                                            <option value="a-z">A/Z</option>
+                                            <option value="z-a">Z/A</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </article>
+                </div>
+                <div class="column is-7-widescreen is-8-desktop ">
+                    <article class="box has-background-grey-darker has-text-white ">
+                        <div class="columns is-mobile is-multiline is-vcentered">
+                            <div class="column is-6 is-12-mobile">
+                                <h4 class="title is-4 has-text-white">Operaciones</h4>
+                            </div>
+                            <div class="column has-text-right-tablet">
+                                <button class="button is-light" id="abrir-nueva-operacion">+ Nueva Operación</button>
+                            </div>
+                        </div>
+                        <div id="contenedor-operaciones"></div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    
+    <!--SECCION NUEVA OPERACION-->
+
+    <section class="section is-hidden seccion-visible" id="seccion-nueva-operacion">
+        <div class="container">
+            <div class="columns is-centered is-mobile">
+                <div class="column is-8-widescreen is-8-widescreen is-12-tablet">
+                    <article class="box has-background-grey-darker ">
+                        <h2 class="title is-size-2 mb-6 has-text-white" id="titulo-modal-editar-crear-operacion">Nueva operación</h2>
+                        <form id="form-nueva-operacion">
+                            <div class="field">
+                                <label class="label has-text-white" for="descripcion-operacion">Descripción</label>
+                                <div class="control">
+                                    <div class="control has-icons-right">
+                                        <input class="input" type="text" id="descripcion-operacion" maxlength="50"
+                                            required>
+                                        <span class="icon is-small is-right is-hidden requested-field">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </span>
+                                        <p class="help is-danger is-hidden requested-field my-0">Ingresa una descripción
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label has-text-white" for="monto-nueva-operacion">Monto</label>
+                                <div class="control">
+                                    <div class="control has-icons-right">
+                                        <input class="input" type="number" id="monto-nueva-operacion" min="0.01"
+                                            max="9999999999" required>
+                                        <span class="icon is-small is-right is-hidden campo-requerido-monto">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </span>
+                                        <p class="help is-danger is-hidden campo-requerido-monto my-0">Ingresa un monto
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="field">
+                                <label class="label has-text-white" for="tipo-nueva-operacion">Tipo</label>
+                                <div class="control">
+                                    <div class="select is-fullwidth">
+                                        <select id="tipo-nueva-operacion">
+                                            <option value="gasto">Gasto</option>
+                                            <option value="ganancia">Ganancia</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label has-text-white" for="categorias-nueva-operacion">Categoría</label>
+                                <div class="control">
+                                    <div class="select is-fullwidth">
+                                        <select id="categorias-nueva-operacion" required>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label has-text-white" for="fecha-nueva-operacion">Fecha</label>
+                                <div class="control">
+                                    <input class="input" id="fecha-nueva-operacion" type="date">
+                                    </input>
+                                </div>
+                            </div>
+                            <div class="is-flex is-justify-content-flex-end">
+                                <div class="field is-grouped buttons mt-6">
+                                    <div class="control">
+                                        <button type="button" class="button is-light"
+                                            id="cancelar-nueva-operacion">Cancelar</button>
+                                    </div>
+                                    <div class="control"  id="agregar-nueva-operacion">
+                                        <button type="button"  class="button is-light">Agregar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </artcile>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--SECCION CATEGORÍAS-->
+
+    <section class="section is-hidden seccion-visible" id="seccion-categorias">
+        <div class="container">
+            <div class="columns is-centered is-mobile is-multiline">
+                <div class="column is-8-widescreen is-9-desktop is-12-tablet">
+                    <article class="box has-background-grey-darker">
+                        <h2 class="title is-size-2  has-text-white">Categorías</h2>
+                        <form>
+                            <label class="label mt-6" for="input-nueva-categoria" aria-label="Nombre nueva categoria">Nombre</label>
+                            <div class="field is-grouped">
+                                <div class="control is-expanded has-icons-right">
+                                    <input class="input"  id="input-nueva-categoria" type="text" maxlength="50" required  aria-label="Ingresar nombre de nueva categoria">
+                                    <span class="icon is-small is-hidden is-right requested-field categoria-repetida">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </span>
+                                </div>
+                                <div class="control">
+                                    <button  class="button is-light"id="agregar-categoria">Agregar</button>
+                                </div>
+                            </div>
+                            <div class="columns is-mobile">
+                                <div class="column pt-0">
+                                    <p class="help is-danger is-hidden requested-field my-0">Elige un nombre para tu
+                                        categoría</p>
+                                    <p class="help is-danger is-hidden my-0 categoria-repetida">La categoría ya existe
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
+
+                        <ul class="mt-5" id="lista-categorias">
+
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--SECCION EDITAR CATEGORÍA-->
+
+    <section class="section is-hidden seccion-visible" id="section-editar-categoria">
+        <div class="container">
+            <div class="columns is-centered is-mobile">
+                <div class="column is-8-widescreen is-9-desktop is-12-tablet">
+                    <article class="box pb-5 has-background-grey-darker">
+                        <h2 class="title is-size-2 mb-6 has-text-white">Editar categoría</h2>
+                        <form>
+                            <label class="label" for="editar-nueva-categoria">Nombre</label>
+                            <div class="columns is-mobile">
+                                <div class="column is-fullwidth mb-5">
+                                    <div class="field">
+                                        <div class="control has-icons-right">
+                                            <input class="input" id="editar-nueva-categoria" type="text" required>
+                                            <span class="icon is-small is-right is-hidden requested-field">
+                                                <i class="fas fa-exclamation-triangle"></i>
+                                            </span>
+                                            <span class="icon is-small is-right is-hidden categoria-repetida">
+                                                <i class="fas fa-exclamation-triangle"></i>
+                                            </span>
+                                            <p class="help is-danger is-hidden requested-field my-0">Elige un nombre para tu categoría</p>
+                                            <p class="help is-danger is-hidden categoria-repetida my-0">La categoría ya
+                                                existe</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="is-flex is-justify-content-flex-end">
+                                <div class="field is-grouped buttons mt-3">
+                                    <div class="control">
+                                        <button type="button" class="button is-light"
+                                            id="cancelar-editar-categoria">Cancelar</button>
+                                    </div>
+                                    <div class="control">
+                                        <button  class="button is-light" id="boton-editar-categoria">Editar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--SECTION REPORTES-->
+
+    <section class="section is-hidden seccion-visible" id="section-reportes">
+        <div class="container">
+            <div class="columns is-centered is-mobile">
+                <div class="column is-8-widescreen is-9-desktop is-12-tablet">
+                    <article class="box has-background-grey-darker">
+                        <h2 class="title is-size-2 has-text-white">Reportes</h2>
+                        <div id= "sin-reportes" class="columns is-centered my-6 py-6 is-hidden">
+                            <div class="column is-6">
+                                <div class="image" aria-hidden= "true">
+                                    <img src="./img/f6059c126082695.61263fa0d89ed.png" alt="monedero" >
+                                </div>
+                                <p class="title has-text-centered mt-6 is-4 has-text-white">Operaciones insuficientes</p>
+                                <p class="has-text-centered is-size-6 has-text-white">Prueba agregando más operaciones</p>
+                            </div>
+                        </div>
+
+                        <div id="con-reportes" class="is-hidden">
+                            <div class="p-5">
+                                <h2 class="title is-4 mt-5 has-text-white">Resumen</h1>
+                                <div class="columns is-mobile mt-2">
+                                    <div class="column is-6 has-text-weight-semibold has-text-white">Categoría con mayor ganancia
+                                    </div>
+                                    <div class="column is-3 has-text-right">
+                                        <span class="tag is-primary is-light" id="categoria-mayor-ganancia"></span>
+                                    </div>
+                                    <div class="column is-3 has-text-right has-text-success has-text-weight-semibold" id="monto-categoria-mayor-ganancia">
+                                        
+                                    </div>
+                                </div>
+                                <div class="columns is-mobile">
+                                    <div class="column is-6 has-text-weight-semibold has-text-white">Categoría con mayor gasto
+                                    </div>
+                                    <div class="column is-3 has-text-right">
+                                        <span class="tag is-primary is-light" id="categoria-mayor-gasto"></span>
+                                    </div>
+                                    <div class="column is-3 has-text-right has-text-danger has-text-weight-semibold" id="monto-categoria-mayor-gasto"></div>
+                                </div>
+                                <div class="columns is-mobile">
+                                    <div class="column is-6 has-text-weight-semibold has-text-white">Categoría con mayor balance
+                                    </div>
+                                    <div class="column is-3 has-text-right">
+                                        <span class="tag is-primary is-light" id="categoria-mayor-balace"></span>
+                                    </div>
+                                    <div class="column is-3 has-text-right has-text-white has-text-weight-semibold" id="monto-categoria-mayor-balance"></div>
+                                </div>
+                                <div class="columns is-mobile">
+                                    <div class="column is-6 has-text-weight-semibold has-text-white">Mes con mayor ganancia
+                                    </div>
+                                    <div class="column is-3 has-text-right has-text-white" id="mes-mayor-ganancia"></div>
+                                    <div class="column is-3 has-text-right has-text-success has-text-weight-semibold" id="monto-mes-mayor-ganancia"></div>
+                                </div>
+                                <div class="columns is-mobile">
+                                    <div class="column is-6 has-text-weight-semibold has-text-white">Mes con mayor gasto
+                                    </div>
+                                    <div class="column is-3 has-text-right has-text-white" id="mes-mayor-gasto"></div>
+                                    <div class="column is-3 has-text-right has-text-danger has-text-weight-semibold" id="monto-mes-mayor-gasto"></div>
+                                </div>
+                            </div>
+                            <div class="p-5 mt-6">
+                                <h2 class="title is-4 mt-5 has-text-white">Totales por categorías</h1>
+                                <div class="columns is-mobile mt-2">
+                                    <div class="column has-text-weight-semibold has-text-white">Categoria</div>
+                                    <div class="column has-text-weight-semibold has-text-right has-text-white">Ganancias</div>
+                                    <div class="column has-text-weight-semibold has-text-right has-text-white">Gastos</div>
+                                    <div class="column has-text-weight-semibold has-text-right has-text-white">Balance</div>
+                                </div>
+                                <div  id="totales-por-categorias">
+                                </div>
+                                </div>
+                            <div class="p-5 mt-6">
+                                <h2 class="title is-4 mt-5 has-text-white">Totales por mes</h1>
+                                <div class="columns is-mobile mt-2">
+                                    <div class="column has-text-weight-semibold has-text-white">Mes</div>
+                                    <div class="column has-text-weight-semibold has-text-right has-text-white">Ganancias</div>
+                                    <div class="column has-text-weight-semibold has-text-right has-text-white">Gastos</div>
+                                    <div class="column has-text-weight-semibold has-text-right has-text-white">Balance</div>
+                                </div>
+                                <div id="totales-por-mes"></div>
+                                
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/app.js"></script>
+</body>
+</html>
